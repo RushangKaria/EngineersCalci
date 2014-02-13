@@ -1,0 +1,63 @@
+#################################################### STEP 4 ######################################################
+
+
+						SYNTHETIC DIVISION
+
+#####################################################################################################################
+REFER TO REFERENCE URL ON HOW TO PERFOM SYNTHETIC DIVISIONy
+
+SOME IMPORTANT POINTS
+-----------------------
+
+if an equation of nth degree is divided by equation of mth degree
+then
+the quotient will be equation of (n-m)th degree..
+
+this is important as it helps to allocate the size of the array
+
+eg if 4rd divided by 1st(which is always the case)(since X-A)is carried out recursively
+the (4-1) is the size of the array required
+
+this is valid for two reasons.
+first the last column is the remainder column which is always zero in our case as we pass a satisfying value to 
+the method and plus it is not used to form an equation...therefore it is useless
+
+second in synthetic division if any power is missing we must plug in zeroes for their coefficients..therefore the 
+length of the division and therefore the array size remains constant
+
+eg.x4+x+1/x-1 
+	    BUT
+according to the rules of synthetic division it is written as
+
+x4+0x3+0x2+x+1
+
+we would require an equation like this to properly get an answer
+#####################################################################################################################
+
+PROGRAM SNIPPET:
+=====================================================================================================================
+
+	EigenVariable[] synthetic_division(int x,EigenVariable v[])
+	{
+	EigenVariable temp[]=new EigenVariable[v.length-1];	//allocate storage
+
+	temp[0]=new EigenVariable();	//initialize else NullPointerException occurs
+	temp[0].value=v[0].value;       //acc to synthetic division first value always comes down
+
+		for(int i=1;i<v.length-1;i++)
+		{						//LOGIC...refer URL
+		temp[i]=new EigenVariable();
+		temp[i].value=x*temp[i-1].value+v[i].value;
+		}
+
+
+	int power=0;
+
+		for(int i=temp.length-1;i>=0;i--)
+		temp[i].power=power++;
+
+		//System.out.println(temp[2].value); DEBUGGING
+	return temp;
+	}
+
+=====================================================================================================================

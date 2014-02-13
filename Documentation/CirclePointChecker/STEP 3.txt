@@ -1,0 +1,53 @@
+################################################ STEP 3 #######################################################
+
+					COMPUTE WHERE THE POINT LIES
+
+
+PROGRAM SNIPPET:
+-----------------------------------------------------------------------------------------------------------------------
+
+
+	String check_where_point_lies(CircleVariable c[],int x1,int y1)
+	{
+	int sum=0;
+	int temp[]={x1,y1};
+
+/* ========================
+
+	int temp[]=new int[2];
+	temp[0]=x1;
+	temp[1]=y1;
+
+==========================*/
+
+		for(int i=0;i<c.length;i++)	//plug in the values to the equation
+		{
+		int x=c[i].value;
+		int y=(int)Math.pow(temp[i%2],c[i].power);	
+				    ---------
+							//since we need alternate putting of X,Y values we therefore
+							//store them in a temp array and then alternate using 
+							//temp[i%2]...ie temp[0%2],temp[1%2] etc. This avoids
+							//complex code and alternates x,y
+							//NOTE: for the last iteration it does not matter if X or Y
+							//is plugged since power==0. therefore X0=Y0=1.
+							//Thus in the equation cX0=cY0=1
+							//Therefore it does not cause any problem
+							//we can also use boolean variable to flip values but that 
+							//would increase the code.
+		int z=x*y;
+		sum+=z;
+		}
+
+	if(sum==0)
+	return "on";
+	else
+	if(sum<0)
+	return "inside";
+	else
+	return "outside";
+
+		//return "outside".toUpperCase(); DO IT FOR ALL RETURNS...JUST FOR EXTRA LEARNING...CHECK PRINT METHOD		
+	}	//				  FOR A MORE CONVINIENT AND SMART WAY
+
+------------------------------------------------------------------------------------------------------------------------

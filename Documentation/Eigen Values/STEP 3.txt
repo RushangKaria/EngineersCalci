@@ -1,0 +1,57 @@
+################################################## STEP 3 ########################################################
+
+					COMPUTE THE EIGEN VALUE
+
+TRIAL AND ERROR:
+--------------------------------------------------------------------------------------------------------------
+We take trial and error as the viable solution...since many values do not need to be tested which eliminates
+the need of complex solving programs...trial and error is reasonable as it does not require much time for 
+the iterations and if eigen values are within its range, then it along with synthetic division gurantee the
+finding of all eigen values.
+--------------------------------------------------------------------------------------------------------------
+
+WORKING:
+############################################
+f(X)=aX3-bX2+cX-dX0
+
+f(trial_value)=a(trial_value)3-b(trial_value)2+c(trial_value)-d(trial_value)0
+
+sum+=a*trial_value_raise_to_power[for the entire equation]
+
+if(f(X)==0)
+trial_value satisfies the equation and is a valid eigen value...return it
+else 
+try another eigen value
+
+############################################
+
+**************************************************************************************************************
+PROGRAM SNIPPET:
+**************************************************************************************************************
+
+	int computeEigenVariable(EigenVariable v[])
+	{
+	int trial_value=-50;		//if you want to increase the range of trial_value make sure you change
+	int sum=0;			//the type to double to handle the large powers of large numbers
+
+		while(trial_value<50)   //cut off after range exhausted but no results found
+		{
+		sum=0;			//reintialize sum for every new trial_value
+
+			for(int i=0;i<v.length;i++) //plug in the values
+			{
+			int a=v[i].value;
+			int b=(int)Math.pow(trial_value,v[i].power);	//if not type cast loss of precision error
+			int x=a*b;					//even though it is correct
+			sum+=x;
+			//System.out.println("sum is "+sum+" trial_value "+trial_value);
+			}
+
+		if(sum==0)
+		return trial_value;
+		else
+		trial_value++;		
+		}
+
+	return -134;	//some random error message..NOTE: -134 can also be an eigen value which will cause confusion
+	}		///and error

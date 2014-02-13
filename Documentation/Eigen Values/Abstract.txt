@@ -1,0 +1,80 @@
+This is a program to calculate the eigen values of a matrix.
+At present it does not calculate the eigen vectors but a future version may do so.
+
+
+PROGRAM: To calculate the eigen values of a matrix
+
+INPUT: The user gives an input matrix
+
+OUTPUT: The eigen values are printed
+
+CONSTRAINTS: Only 3x3 matrices are allowed...2x2 support is not currently included
+
+ABSTRACT:
+This program calculates the eigen values of a matrix. It uses the eigen value equation for computation of the first 
+value. It relies solely on trial and error with the range of trials between -50 and 50. The range can be increased
+provided the type of the variable is changed to double to handle the greater values. It also uses a self defined 
+private class aka EigenVariable. It is used to store the equation. Once the first equation is formed we use synthetic
+division and trial and error recursively for computing the remaining values.
+
+NOTE: for an equation of 'n' degree..there are maximum 'n' distinct factors
+      so for a degree 3 equation maximum three distinct eigen vectors can be found
+
+
+REASON FOR USING SYNTHETIC DIVISION
+
+If all the eigen values are distinct then trial and error solely can be used to compute it. But this is not the case.
+Eigen values can be repeated. Using trial and error if we remove 1 value then we might not get the repeated value and
+have no way of determining which is repeated.
+
+eg. if 1,1,5
+	the program will display 1,5
+	which is repeated we cannot determine
+
+if we do not remove the testing of 1 value then it will get repeated all times
+
+eg 1,1,4 OR 1,2,3
+
+	the program will display 1,1,1 ie. the first value that passes the test
+
+Thus we use synthetic division we eliminate one factor from the equation so that trial and error can again be safely 
+carried out. If the same outcome results it means it is repeated
+
+eg. (X-1)(X-1)(X-5)
+
+first eigen value got is 1
+SYNTHETIC DIVISION
+
+	(X-1)(X-5)
+second value is 1 (Repeated)
+and the third is 5
+
+
+========================================== VARIABLE NOMENCLATURE ============================================
+
+InputStreamReader |	user input streams
+BufferedReader    |     
+
+a[][] ---> it is the input array
+answer[] ---> it is the o/p array
+
+determinant ---> it is used to hold the determinant of the matrix
+cross_product ---> it is used to hold the cross_product ie.the coefficient of lambda square in the eigen equation
+
+
+class EigenVariable ---> it is used to hold the coefficient and power..it is helpful in the construction of the 
+			 equations....it is a critical component.
+
+fill_matrix() ---> it is used to take the input matrix from the user
+
+calculate_determinant/cross_product()
+
+split_matrix --->it is used to split a 3x3 matrix to 2x2 to calculate the determinant
+
+formEquation() --->it is used to form the initial Eigen Equation
+
+computeEigenVariable() ---> it is used to compute Eigen variables for the equations passed
+
+synthetic_division() --->it is used to perform synthetic division
+
+display ---> used to display the final answer

@@ -1,0 +1,85 @@
+################################################ STEP 2 #######################################################
+
+					    FORM THE EQUATION
+
+
+PROGRAM SNIPPET:
+-----------------------------------------------------------------------------------------------------------------------
+
+	CircleVariable[] formEquation()
+	{
+	int _2gx,_2fy,c;
+	boolean flipper=false; //to flip x OR y assignment in the equation
+			       //since this equation has 2 variables 1 variable does not suffice and we need to flip
+			       //the values appropriately since we are automating it in a loop rather than manually
+
+	_2gx=2*x*(-1);	//eqn can be expressed as (x-a)2+(y-b)2=r2.....
+	_2fy=2*y*(-1);  //therefore -2ax is 2gx...ie. 2g=-2a
+	c=x*x+y*y-radius*radius;
+
+	int temp[]={1,1,_2gx,_2fy,c};	//again since we are automating filling of values it would be better to assign
+					//it to an array so that we can accomplish the task in one loop only and not 
+					//have different loops for different stuff
+/* ---------------OR------------------
+
+	int temp[]=new int[5];
+	temp[0]=1;
+	temp[1]=1;			//a more tedious way for the above statement
+	temp[2]=_2gx;
+	temp[3]=_2fy;
+	temp[4]=c;
+
+---------------------------------------*/		
+
+	//System.out.println("2g="+_2gx+"\n2f="+_2fy+"\nc="+c); DEBUGGING
+
+		CircleVariable z[]=new CircleVariable[5];	//5 variables required to store circle equation
+		for(int i=0;i<5;i++)				//initialization of them
+		z[i]=new CircleVariable();			//it can be put in the next loop 
+
+	int power=2;			//since assigning is starting from position 0
+
+			for(int i=0;i<5;i++)
+			{
+			z[i].value=temp[i];
+			z[i].power=power;
+
+				if(flipper) //to assign alternate x and y to variables
+				{
+				z[i].name='Y';
+				flipper=false;//reset flipper so that next assignment is x
+				power--;	//once y arrives then next power is decremented in lexicographic order
+				continue;	//continue so that last statement is not executed else all are named Y
+				}
+			flipper=true;	//set flipper indicating next name is Y
+			}
+
+	//displayEquation(z);	IF YOU WANT TO DISPLAY THE EQUATION
+
+
+	return z;			
+	}
+
+	void displayEquation(CircleVariable z[])
+	{
+	System.out.println("The Equation is:");
+
+		for(int i=0;i<5;i++)
+		if(z[i].value>=0)//since +ve sign is not added for a +ve no...try removing the underlined statement
+				//answer will be 1X21Y2.... instead of 1X2+1Y2
+		System.out.print("+"+z[i].value+""+z[i].name+""+z[i].power+"");
+		else            -----
+		System.out.print(z[i].value+""+z[i].name+""+z[i].power+"");
+
+		System.out.print("=0");
+
+/*
+	NOTE: ALWAYS USE (a+""+b) if a,b are different values...
+	      NEVER USE  (a+b) else the printed value will be the sum of (a+b) even if they are characters
+									     ie. ASCII values get added
+*/
+
+	System.out.println("");
+	}
+
+------------------------------------------------------------------------------------------------------------------------

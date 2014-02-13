@@ -1,0 +1,56 @@
+This is a program to calculate the values of a quadratic equation.
+Imaginary roots are also calculated.
+Starting v 6.5.3 OWN EXCEPTION HANDLING is being added for enhanced flexibility.
+
+
+
+PROGRAM: To compute the values of a quadratic equation
+
+INPUT: The user gives the input equation
+
+OUTPUT: The values are printed in STRING and NUMERIC form.
+
+CONSTRAINTS: The coefficient of X2 must not be equal to zero
+	     The equation must be of the form ax2+bx+c=0
+
+ABSTRACT:
+This program calculates the values that satisfy the quadratic equation. Since the max power of a quadratic equation is 2, 2 answers are possible. Rational roots and irrational roots are possible. The computation is based on the formula of 
+b2-4ac.
+
+NOTE: The RHS of the equation has to be zero.
+      String form of the answer is without computation and is the only form of display for negative determinant.
+      Various errors not handled by JAVA are defined.
+
+
+========================================== VARIABLE NOMENCLATURE ============================================
+
+InputStreamReader |	user input streams
+BufferedReader    |     
+
+a[][] ---> it is the input array
+answer[] ---> it is the o/p array
+
+class Variables ---> This class is used to store the variables a,b,c of ax2+bx+c=0. 
+
+class Result ---> This class is used to store the result of the quadratic equation
+
+class PlusMinusException ---> This exception is thrown to show that +/- are jumbled up and make the equation 			    			      invalid.
+			      For eg. 2+3X2+1X1+2X0 is wrong 
+
+class PowerException ---> This exception is thrown to show that the equation is not quadratic and the power is something 			  else than 2.
+
+class notQuadraticException ---> This exception is thrown to show that the coefficient of X2 is 0 and thus the equation
+				 is not quadratic.
+
+public class QuadraticEquations ---> Is the main class which hosts the program.
+
+valid() ---> This is one of the core classes. It is used to validate the input equation. IF VALID, then only can furthur
+	     computation be done. If NOT VALID then gracefully terminate the program.
+
+getVariables() ---> Once the input is verified to be valid the variables are extracted using this method.
+
+compute() ---> Core computation is done here. The results are stored here.
+
+display() ---> This method is used to display the results.
+
+driver() ---> This method drives the program.

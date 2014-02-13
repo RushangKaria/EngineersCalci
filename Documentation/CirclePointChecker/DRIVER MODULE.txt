@@ -1,0 +1,31 @@
+############################################### DRIVER MODULE ######################################################
+
+
+
+PROGRAM SNIPPET:
+----------------------------------------------------------------------------------------------------------
+
+	void start()throws IOException
+	{
+	take_input();	//used to take input from user
+
+	CircleVariable c[];
+
+		c=formEquation();//circle equation
+
+	int x1,y1;//the co-ordinates of the point to be checked
+
+	System.out.println("Enter the x-point");
+	x1=Integer.parseInt(input.readLine());
+
+	System.out.println("Enter the y-point");
+	y1=Integer.parseInt(input.readLine());
+
+	String result;
+
+
+		result=check_where_point_lies(c,x1,y1);//compute where the point lies
+
+	printResult(result,x1,y1); //print the result
+	}
+__________________________________________________________________________________________________________

@@ -1,0 +1,28 @@
+############################################### DRIVER MODULE ######################################################
+
+
+
+PROGRAM SNIPPET:
+----------------------------------------------------------------------------------------------------------
+
+	void initialize()throws IOException	
+	{
+
+		while(index<3)	//since 3 eigen values need to be computed..once got 3 calculation over
+		{
+		x=computeEigenVariable(v); //compute the variable
+
+			if(x==-134) //if error then print error message and return
+			{
+			System.out.println("ERROR..calculator not powerful enough to solve this equation");
+			return;
+			}
+
+			answer[index++]=x;         //store value and increment count
+			v=synthetic_division(x,v); //recursively divide with new value
+			
+		}
+
+	display();  //display the result
+	}
+__________________________________________________________________________________________________________

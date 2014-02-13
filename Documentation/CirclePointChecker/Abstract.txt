@@ -1,0 +1,56 @@
+This program checks whether a point lies on/inside/outside a circle.
+
+
+PROGRAM: To check if a point lies on/inside/outside a circle
+
+INPUT: The user provides the center-point form of the circle (center and radius) and the point to be checked 
+
+OUTPUT: Whether the point lies on/inside/outside the circle 
+
+CONSTRAINTS: The only input available is the center-point form, parametric etc. equations are not supported
+
+ABSTRACT:
+The equation of a circle is given as 
+x2+y2+2gx+2fy+c=0
+where
+(-g,-f)=center
+g2+f2-c=radius^2
+
+f(x,y)=x2+y2+2gx+2fy+c
+
+f(a,b)=a2+b2+2ga+2fb+c
+
+f(a,b) 	  result
+------------------
+   0	| on
+  -ve	| inside
+  +ve	| outside
+
+
+========================================== VARIABLE NOMENCLATURE ============================================
+
+InputStreamReader |	user input streams
+BufferedReader    |     
+
+x --> the x co-ordinate of the center
+y --> the y co-ordinate of the center
+radius --> the radius of the circle
+
+x1 --> the x co-ordinate of the point under consideration
+y1 --> the y co-ordinate of the point under consideration
+result --> the result String is stored in this variable {ON,INSIDE,OUTSIDE}
+
+start() --> the driver module
+
+take_input() --> used to take the center and radius from the user
+
+formEquation() --> used to form the equation of the circle
+
+class CircleVariable --> used to hold the equation of the circle...a critical component
+
+check_where_point_lies() --> used to compute where the point lies
+
+displayEquation() --> used to display the equation of the circle
+
+printResult() --> used to print the result
+

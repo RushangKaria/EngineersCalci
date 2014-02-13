@@ -1,0 +1,36 @@
+################################################ STEP 1 #######################################################
+
+					TAKE THE INPUT FROM THE USER
+
+
+PROGRAM SNIPPET:
+-----------------------------------------------------------------------------------------------------------------------
+	
+	void take_input()throws IOException
+	{
+		System.out.println("Enter the x-center of the circle");
+		x=Integer.parseInt(input.readLine());
+
+		System.out.println("Enter the y-center of the circle");
+		y=Integer.parseInt(input.readLine());
+
+		System.out.println("Enter the radius of the circle");
+		radius=Integer.parseInt(input.readLine());
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ERROR CHECKING IN INPUT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			if(radius==0) 
+			{
+			System.out.println("CIRCLE IS A POINT");
+			return;
+			}
+			else
+				if(radius<0)
+				{
+				System.out.println("ERROR...RADIUS CANNOT BE -VE");
+				return;
+				}
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		//System.out.println(x+""+y+""+radius);	 DEBUGGING
+	}
+
+------------------------------------------------------------------------------------------------------------------------
